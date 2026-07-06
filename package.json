@@ -1,0 +1,66 @@
+{
+  "name": "vue-border-beam",
+  "version": "0.1.0",
+  "description": "Animated border beam effect for Vue",
+  "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.es.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs.js"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "test": "vitest run",
+    "typecheck": "vue-tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/test-utils": "^2.4.6",
+    "highlight.js": "^11.11.1",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.19",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^2.1.9",
+    "vue": "^3.5.17",
+    "vue-tsc": "^2.2.12"
+  },
+  "keywords": [
+    "vue",
+    "animation",
+    "border",
+    "beam",
+    "glow",
+    "effect",
+    "css"
+  ],
+  "license": "MIT",
+  "author": "Steve Bauman",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevebauman/vue-border-beam.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stevebauman/vue-border-beam/issues"
+  },
+  "homepage": "https://github.com/stevebauman/vue-border-beam#readme"
+}

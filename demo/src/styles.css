@@ -1,0 +1,1792 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* transitions.dev tokens + theme color tokens (dark defaults). */
+:root {
+  --tabs-dur: 200ms;
+  --tabs-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tabs-text-muted: rgba(239, 239, 239, 0.5);
+  --tabs-text-hover: rgba(239, 239, 239, 0.75);
+  --tabs-text-active: #efefef;
+  --tabs-bar-bg: #1c1c1c;
+  --tabs-pill-bg: #494949;
+  --tabs-pill-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 0.16);
+
+  --shimmer-dur: 2000ms;
+  --shimmer-base: #6f6c6c;
+  --shimmer-highlight: #ededed;
+  --shimmer-band: 400%;
+  --shimmer-ease: linear;
+
+  --page-slide-dur: 200ms;
+  --page-fade-dur: 200ms;
+  --page-slide-distance: 8px;
+  --page-blur: 3px;
+  --page-stagger: 0ms;
+  --page-exit-enabled: 1;
+  --page-slide-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --page-fade-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Theme tokens (dark) ── */
+  --c-bg: #070707;
+  --c-text: #fbfbfb;
+  --c-heading: #ffffff;
+  --c-heading-muted: #f0f0f0;
+  --c-subtitle: #cacaca;
+  --c-muted: rgba(251, 251, 251, 0.6);
+  --c-muted-soft: rgba(251, 251, 251, 0.4);
+  --c-muted-strong: rgba(251, 251, 251, 0.7);
+  --c-muted-strongest: rgba(251, 251, 251, 0.9);
+
+  --c-surface: rgba(217, 217, 217, 0.05);
+  --c-surface-hover: rgba(217, 217, 217, 0.07);
+  --c-panel: #121212;
+  --c-border: transparent;
+  --c-code-text: #ffffff;
+
+  --c-btn-bg: rgba(255, 255, 255, 0.03);
+  --c-btn-bg-hover: rgba(255, 255, 255, 0.06);
+  --c-btn-bg-press: rgba(255, 255, 255, 0.08);
+  --c-btn-bg-active: rgba(255, 255, 255, 0.1);
+  --c-btn-text: rgba(251, 251, 251, 0.5);
+  --c-btn-text-hover: rgba(251, 251, 251, 0.7);
+  --c-btn-text-active: #fbfbfb;
+  --c-btn-line-1: rgba(255, 255, 255, 0.02);
+  --c-btn-line-2: rgba(255, 255, 255, 0.06);
+
+  --c-track-bg: rgba(255, 255, 255, 0.07);
+  --c-track-bg-hover: rgba(255, 255, 255, 0.09);
+  --c-track-fill: rgba(255, 255, 255, 0.1);
+
+  --c-icon-bg: rgba(255, 255, 255, 0.07);
+  --c-icon-bg-hover: rgba(255, 255, 255, 0.1);
+  --c-icon-fill: #fbfbfb;
+
+  --c-focus: rgba(255, 255, 255, 0.5);
+
+  /* mock device UI surfaces */
+  --c-mock-bg: #1d1d1d;
+  --c-mock-border: rgba(44, 47, 54, 0.52);
+  --c-mock-glow: rgba(255, 255, 255, 0.02);
+  --c-mock-chip-bg: rgba(255, 255, 255, 0.04);
+  --c-mock-chip-line: rgba(255, 255, 255, 0.02);
+  --c-mock-chip-top: rgba(255, 255, 255, 0.04);
+  --c-mock-text: #c0c0c0;
+  --c-mock-text-strong: #ffffff;
+  --c-mock-placeholder: #4e4e4e;
+  --c-mock-tag-text: #caccd2;
+  --c-mock-search-text: #565656;
+  --c-mock-square: rgba(217, 217, 217, 0.8);
+}
+
+/* ── Theme tokens (light) — palette taken from the img-fx playground ── */
+html[data-theme='light'] {
+  --tabs-text-muted: rgba(51, 51, 51, 0.6);
+  --tabs-text-hover: rgba(51, 51, 51, 0.8);
+  --tabs-text-active: #2b2b2b;
+  --tabs-bar-bg: #f5f5f5;
+  --tabs-pill-bg: #ffffff;
+  --tabs-pill-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.06),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(196, 196, 196, 0.1);
+
+  --shimmer-base: #9a9aa4;
+  --shimmer-highlight: #2a2a32;
+
+  --c-bg: #fdfdfd;
+  --c-text: #1a1a22;
+  --c-heading: #111111;
+  --c-heading-muted: #1a1a22;
+  --c-subtitle: #5c5c6e;
+  --c-muted: #5c5c6e;
+  --c-muted-soft: rgba(28, 28, 38, 0.45);
+  --c-muted-strong: #3a3a48;
+  --c-muted-strongest: #1a1a22;
+
+  --c-surface: #f6f6f8;
+  --c-surface-hover: #eeeef3;
+  --c-panel: #f4f4f7;
+  --c-border: #e3e3ec;
+  --c-code-text: #1a1a22;
+
+  --c-btn-bg: rgba(17, 17, 17, 0.03);
+  --c-btn-bg-hover: rgba(17, 17, 17, 0.06);
+  --c-btn-bg-press: rgba(17, 17, 17, 0.08);
+  --c-btn-bg-active: #ffffff;
+  --c-btn-text: #5c5c6e;
+  --c-btn-text-hover: #1a1a22;
+  --c-btn-text-active: #111111;
+  --c-btn-line-1: rgba(0, 0, 0, 0.04);
+  --c-btn-line-2: rgba(200, 200, 212, 0.9);
+
+  --c-track-bg: rgba(17, 17, 17, 0.06);
+  --c-track-bg-hover: rgba(17, 17, 17, 0.09);
+  --c-track-fill: rgba(17, 17, 17, 0.14);
+
+  --c-icon-bg: rgba(17, 17, 17, 0.05);
+  --c-icon-bg-hover: rgba(17, 17, 17, 0.09);
+  --c-icon-fill: #1a1a22;
+
+  --c-focus: rgba(17, 17, 17, 0.4);
+
+  --c-mock-bg: #ffffff;
+  --c-mock-border: rgba(200, 200, 212, 0.85);
+  --c-mock-glow: rgba(0, 0, 0, 0.015);
+  --c-mock-chip-bg: rgba(17, 17, 17, 0.04);
+  --c-mock-chip-line: rgba(0, 0, 0, 0.05);
+  --c-mock-chip-top: rgba(255, 255, 255, 0.7);
+  --c-mock-text: #3a3a48;
+  --c-mock-text-strong: #111111;
+  --c-mock-placeholder: #9a9aa4;
+  --c-mock-tag-text: #3a3a48;
+  --c-mock-search-text: #8a8a94;
+  --c-mock-square: rgba(40, 40, 52, 0.75);
+}
+
+html,
+body {
+  min-height: 100dvh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Skip link ────────────────────────────────────────────── */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 200;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: #fff;
+  color: #070707;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ─── Main container ───────────────────────────────────────── */
+
+.app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 883px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 24px 64px;
+}
+
+/* ─── Social links (absolutely positioned in header) ─────── */
+
+.top-bar-links {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+/* Theme toggle icon stack — both icons live in the DOM permanently,
+   stacked in a 16x16 wrapper, crossfading via opacity/scale/blur driven
+   by `data-active`. */
+.theme-icon-stack {
+  position: relative;
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+}
+
+.icon-btn .theme-icon {
+  position: absolute;
+  inset: 0;
+  width: 16px;
+  height: 16px;
+  display: block;
+  transform-origin: center;
+  pointer-events: none;
+  user-select: none;
+  transition:
+    opacity 200ms ease-in-out,
+    transform 200ms ease-in-out,
+    filter 200ms ease-in-out,
+    color 0.15s ease;
+  opacity: 0;
+  transform: scale(0.25);
+  filter: blur(2px);
+}
+
+.theme-icon-stack[data-active='moon'] .theme-icon-moon,
+.theme-icon-stack[data-active='sun'] .theme-icon-sun {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #ededed;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-btn:active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.icon-btn:focus-visible {
+  outline: 2px solid #ededed;
+  outline-offset: 2px;
+}
+
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex-shrink: 0;
+  fill: currentColor;
+  color: rgba(237, 237, 237, 0.6);
+  transition: color 0.15s ease;
+}
+
+.icon-btn svg.icon-x {
+  width: 16px;
+  height: 17px;
+}
+
+.icon-btn:hover svg {
+  color: #ededed;
+}
+
+html[data-theme='light'] .icon-btn {
+  background: #f4f4f4;
+  color: #0d0d0d;
+}
+
+html[data-theme='light'] .icon-btn:hover {
+  background: #f1f1f1;
+}
+
+html[data-theme='light'] .icon-btn:active {
+  background: #eae9e9;
+}
+
+html[data-theme='light'] .icon-btn:focus-visible {
+  outline-color: #0d0d0d;
+}
+
+html[data-theme='light'] .icon-btn svg {
+  color: rgba(13, 13, 13, 0.6);
+}
+
+html[data-theme='light'] .icon-btn:hover svg {
+  color: #0d0d0d;
+}
+
+/* ─── Header ───────────────────────────────────────────────── */
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 218px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 53px;
+}
+
+.header-icon {
+  position: relative;
+  margin-top: -30px;
+  margin-bottom: -20px;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.header-icon-img {
+  display: block;
+  transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Theme-aware header icon: dark variant by default, light variant crossfades
+   in for light mode. The light img is stacked over the dark one. */
+.header-icon-img--light {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+html[data-theme='light'] .header-icon-img--dark {
+  opacity: 0;
+}
+
+html[data-theme='light'] .header-icon-img--light {
+  opacity: 1;
+}
+
+.header-icon:hover .header-icon-img {
+  filter: hue-rotate(45deg) brightness(1.1);
+  transform: rotate(8deg) scale(1.06);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 30px;
+  color: var(--c-heading);
+}
+
+.subtitle-sm {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--c-subtitle);
+  opacity: 0.5;
+}
+
+/* ─── Family tabs ──────────────────────────────────────────── */
+
+.tab-nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: 3px;
+  padding: 3px;
+  border-radius: 48px;
+  background: var(--tabs-bar-bg);
+  margin-bottom: 32px;
+}
+
+.tab-nav .tab-btn {
+  position: relative;
+  z-index: 1;
+  height: 30px;
+  /* Equal width for every tab so the sliding pill only translates (constant
+     width) instead of resizing between differently-sized labels — otherwise the
+     width tween races the content reflow on mobile and reads as a jump. */
+  min-width: 72px;
+  padding: 4px 12px;
+  border-radius: 48px;
+  background: transparent;
+  color: var(--tabs-text-muted);
+  font-weight: 500;
+  box-shadow: none;
+  transition: color var(--tabs-dur) var(--tabs-ease);
+}
+
+.tab-nav .tab-btn[data-active='true'] {
+  background: transparent;
+  color: var(--tabs-text-active);
+}
+
+/* Hover moves only halfway from muted (0.5) to active (1.0). */
+.tab-nav .tab-btn:not([data-active='true']):hover {
+  background: transparent;
+  color: var(--tabs-text-hover);
+}
+
+/* Sliding active pill — width + transform are written inline by JS so the
+   transition tweens between the previous and next measured positions. */
+.tab-nav-pill {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  z-index: 0;
+  height: 30px;
+  width: 0;
+  border-radius: 48px;
+  background: var(--tabs-pill-bg);
+  box-shadow: var(--tabs-pill-shadow);
+  transform: translateX(0);
+  transition:
+    transform var(--tabs-dur) var(--tabs-ease),
+    width var(--tabs-dur) var(--tabs-ease);
+  will-change: transform, width;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-nav-pill,
+  .tab-nav .tab-btn {
+    transition: none !important;
+  }
+}
+
+/* ─── UI Examples ──────────────────────────────────────────── */
+
+.examples-section {
+  width: 100%;
+  position: relative;
+  min-height: 696px;
+  margin-bottom: 48px;
+}
+
+/* transitions.dev — page side-by-side */
+.t-page-slide .t-page[data-page-id="1"] {
+  --t-page-from-x: calc(var(--page-slide-distance) * -1);
+}
+.t-page-slide .t-page[data-page-id="2"] {
+  --t-page-from-x: var(--page-slide-distance);
+}
+.t-page-slide .t-page {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(calc(var(--t-page-from-x, 0px) * var(--page-exit-enabled)));
+  filter: blur(calc(var(--page-blur) * var(--page-exit-enabled)));
+  transition:
+    opacity   var(--page-fade-dur)  var(--page-fade-ease),
+    transform var(--page-slide-dur) var(--page-slide-ease),
+    filter    var(--page-slide-dur) var(--page-slide-ease);
+  will-change: opacity, transform, filter;
+}
+.t-page-slide[data-page="1"] .t-page[data-page-id="1"],
+.t-page-slide[data-page="2"] .t-page[data-page-id="2"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  filter: blur(0);
+  transition-delay: var(--page-stagger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-page-slide .t-page { transition: none !important; }
+}
+
+/* Shared page layout inside each sliding page. */
+.examples-page {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Pulse page blooms outward; let the glow spill past the example frames. */
+.examples-page--pulse .example-row-full,
+.examples-page--pulse .example-cell {
+  overflow: visible;
+}
+
+/* Hidden tab should not keep running decorative animations offscreen. */
+.t-page[aria-hidden="true"] * {
+  animation-play-state: paused !important;
+}
+
+.example-row-full {
+  width: 100%;
+  height: 370px;
+  border-radius: 30px;
+  background: rgba(217, 217, 217, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+html[data-theme='light'] .example-row-full {
+  background: #f7f7f7;
+}
+
+.example-row-split {
+  display: grid;
+  grid-template-columns: 271fr 552fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.example-cell {
+  border-radius: 30px;
+  background: rgba(217, 217, 217, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 40px;
+  min-height: 314px;
+  overflow: hidden;
+}
+
+html[data-theme='light'] .example-cell {
+  background: #f7f7f7;
+}
+
+/* ─── Mock UI: Chat input ──────────────────────────────────── */
+
+.mock-chat {
+  width: 348px;
+  max-width: 100%;
+  border-radius: 20px;
+  border: none;
+  background: var(--c-mock-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--c-mock-border),
+    inset 0 0 50px 0 var(--c-mock-glow);
+  overflow: hidden;
+  position: relative;
+}
+
+.mock-chat-inner {
+  padding: 7px 7px 8px;
+  display: flex;
+  flex-direction: column;
+  height: 122px;
+}
+
+.mock-chat .pill {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  height: 24px;
+  padding: 0 4px;
+  margin-left: 1px;
+  border-radius: 36px;
+  background: var(--c-mock-chip-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--c-mock-chip-line),
+    inset 0 1px 0 0 var(--c-mock-chip-top);
+}
+
+.mock-chat .pill svg {
+  width: 16px;
+  height: 16px;
+}
+
+.mock-chat .placeholder {
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--c-mock-placeholder);
+  padding: 16px 4px 0;
+}
+
+.mock-chat .bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.mock-chat .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 6px 0 8px;
+  border-radius: 36px;
+  background: var(--c-mock-chip-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--c-mock-chip-line),
+    inset 0 1px 0 0 var(--c-mock-chip-top);
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--c-mock-tag-text);
+}
+
+/* Keep the Agent/Auto cluster inset symmetric with the bottom inset (8px). */
+.mock-chat .bottom-row .tag:first-child {
+  margin-left: 1px;
+}
+
+.mock-chat .tag svg {
+  width: 16px;
+  height: 16px;
+}
+
+.mock-chat .send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 36px;
+  background: var(--c-mock-chip-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--c-mock-chip-line),
+    inset 0 1px 0 0 var(--c-mock-chip-top);
+  margin-left: auto;
+  cursor: default;
+  padding: 0 8px;
+}
+
+.mock-chat .send-btn svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+/* ─── Mock UI: Working task list ───────────────────────────── */
+
+.mock-working {
+  width: 295px;
+  max-width: 100%;
+  border-radius: 20px;
+  border: none;
+  background: var(--c-mock-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--c-mock-border),
+    inset 0 0 50px 0 var(--c-mock-glow);
+  padding: 18px 20px 20px;
+  position: relative;
+}
+
+.mock-working-header {
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--shimmer-base);
+}
+
+/* transitions.dev — shimmer text (loading "Working..." label) */
+.t-shimmer {
+  position: relative;
+  display: inline-block;
+  color: var(--shimmer-base);
+}
+.t-shimmer::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    90deg,
+    transparent          0%,
+    transparent         40%,
+    var(--shimmer-highlight) 50%,
+    transparent         60%,
+    transparent        100%
+  );
+  background-size: var(--shimmer-band) 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: t-shimmer var(--shimmer-dur) var(--shimmer-ease) infinite;
+}
+@keyframes t-shimmer {
+  0%   { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-shimmer::before { animation: none !important; }
+}
+
+.mock-working-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.mock-working-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mock-working-row svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.mock-working-row span {
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--c-mock-text);
+  white-space: nowrap;
+}
+
+/* ─── Mock UI: Subscribe button ────────────────────────────── */
+
+.mock-subscribe {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 48px;
+  border: none;
+  background: var(--c-mock-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--c-mock-border),
+    inset 0 0 50px 0 var(--c-mock-glow);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--c-mock-text-strong);
+}
+
+/* ─── Mock UI: Icon button ─────────────────────────────────── */
+
+.mock-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 20px;
+  border: none;
+  background: var(--c-mock-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--c-mock-border),
+    inset 0 0 50px 0 var(--c-mock-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mock-icon-btn-square {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--c-mock-square);
+}
+
+/* ─── Mock UI: Search bar ──────────────────────────────────── */
+
+.mock-search {
+  width: 366px;
+  max-width: 100%;
+  height: 42px;
+  border-radius: 64px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mock-search-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: none;
+  background: var(--c-mock-bg);
+  box-shadow:
+    inset 0 0 0 1px var(--c-mock-border),
+    inset 0 0 50px 0 var(--c-mock-glow);
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+  gap: 10px;
+}
+
+.mock-search svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.4;
+}
+
+.mock-search span {
+  font-size: 15px;
+  line-height: 18px;
+  color: var(--c-mock-search-text);
+}
+
+/* ─── Light theme: match the Figma playground mock UI precisely ─
+   Floating white cards with a 1px near-black ring + soft drop
+   shadows, neutral-gray text and raised white pills. */
+/* The drop shadow lives on the BorderBeam wrapper (.beam-host) rather than the
+   inner card: the wrapper's overflow:hidden clips a child's box-shadow, but
+   never an element's own. The inner cards stay flat white in light mode. */
+html[data-theme='light'] .beam-host {
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 2px 6px 0 rgba(0, 0, 0, 0.05),
+    0 4px 42px 0 rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme='light'] .beam-host--soft {
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 2px 6px 0 rgba(0, 0, 0, 0.03),
+    0 4px 42px 0 rgba(0, 0, 0, 0.02);
+}
+
+/* Pill-style host (e.g. Subscribe) uses the lighter chip shadow, not the
+   bigger floating-card shadow. */
+html[data-theme='light'] .beam-host--pill {
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.06),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(196, 196, 196, 0.1);
+}
+
+/* Pulse-outside tuning preset (mirrors the subscribe controls defaults):
+   X=2px, Y=1px, core blur=7px, bloom blur=19px, glow opacity=200%. */
+.beam-host--pulse-outside-tuned {
+  /* Proportional boost on top of the component's measured per-element glow
+     scale — the Subscribe button (source of truth) uses measured 0.35 x 1.5
+     = 0.525, so every element gets the same 1.5x relative prominence. */
+  /* 1.5 base prominence, scaled 30% down on this larger card so the halo isn't
+     oversized (1.5 x 0.7 = 1.05). */
+  --pulse-glow-boost: 1.05;
+  --sub-glow-offset-x: 1px;
+  --sub-glow-offset-y: 0px;
+  --sub-core-blur: 10px;
+  --sub-bloom-blur: 19px;
+  --sub-glow-opacity-mul: 1.71;
+  /* How much bigger this element is than the Subscribe button (whose measured
+     glow scale is 0.35 = baseline 1). Halo reach and blur scale with it so
+     large cards keep the button's PROPORTIONAL prominence. The 0.7 factor
+     scales the halo 30% down to taste. */
+  --sub-glow-unit: calc(var(--pulse-glow-sx, 0.35) / 0.35 * 0.7);
+  /* Library hooks: scale the REAL layer opacity (unlike filter opacity(),
+     which clamps at 100%). */
+  --beam-inner-opacity: var(--sub-glow-opacity-mul);
+  --beam-bloom-opacity: var(--sub-glow-opacity-mul);
+  --beam-stroke-opacity: var(--sub-glow-opacity-mul);
+  /* Library glow-filter hooks — tune blur/brightness WITHOUT replacing the whole
+     `filter` (an external `filter: ... !important` drops the library's hue-rotate
+     term and desyncs the glow colors from the 1px stroke ring). */
+  --beam-core-blur: calc(var(--sub-core-blur) * var(--sub-glow-unit));
+  --beam-bloom-blur: calc(var(--sub-bloom-blur) * var(--sub-glow-unit));
+  --beam-glow-brightness: calc(1.3 * var(--sub-glow-opacity-mul));
+  --beam-glow-saturate: calc(1.2 * var(--sub-glow-opacity-mul));
+}
+
+.beam-host--pulse-outside-tuned[data-active]::before,
+.beam-host--pulse-outside-tuned[data-fading]::before {
+  inset: calc(-6px * var(--sub-glow-unit)) !important;
+  transform: translate(var(--sub-glow-offset-x), var(--sub-glow-offset-y)) !important;
+}
+
+.beam-host--pulse-outside-tuned[data-active] [data-beam-bloom],
+.beam-host--pulse-outside-tuned[data-fading] [data-beam-bloom] {
+  inset: calc(-14px * var(--sub-glow-unit)) !important;
+  transform: translate(var(--sub-glow-offset-x), var(--sub-glow-offset-y)) !important;
+}
+
+html[data-theme='light'] .mock-subscribe {
+  color: #2b2b2b;
+}
+
+html[data-theme='light'] .mock-chat,
+html[data-theme='light'] .mock-working,
+html[data-theme='light'] .mock-subscribe,
+html[data-theme='light'] .mock-icon-btn,
+html[data-theme='light'] .mock-search-inner {
+  box-shadow: none;
+}
+
+html[data-theme='light'] .mock-chat .pill,
+html[data-theme='light'] .mock-chat .tag,
+html[data-theme='light'] .mock-chat .send-btn {
+  background: #ffffff;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.06),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(196, 196, 196, 0.1);
+}
+
+html[data-theme='light'] .mock-chat .tag {
+  color: #555555;
+}
+
+html[data-theme='light'] .mock-chat .placeholder {
+  color: rgba(78, 78, 78, 0.5);
+}
+
+html[data-theme='light'] .mock-working-row span {
+  color: #4b4b4b;
+}
+
+html[data-theme='light'] .mock-working-header,
+html[data-theme='light'] .mock-working-header.t-shimmer {
+  color: #6f6c6c;
+}
+
+/* Figma renders the dashed task circles at 50% opacity (faint). */
+html[data-theme='light'] .mock-working-row svg {
+  opacity: 0.5;
+}
+
+/* ─── Section: Installation / Usage ────────────────────────── */
+
+.section {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 34px;
+  color: var(--c-heading-muted);
+  margin-bottom: 4px;
+}
+
+.section-title--muted {
+  color: var(--c-subtitle);
+}
+
+/* ─── Code block ───────────────────────────────────────────── */
+
+.code-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  background: #121212;
+  border-radius: 10px;
+  padding: 4px 8px 4px 14px;
+  position: relative;
+}
+
+html[data-theme='light'] .code-block {
+  background: #f7f7f7;
+  box-shadow: none;
+}
+
+.code-block--multi {
+  height: auto;
+  padding: 6px 8px 6px 14px;
+  align-items: flex-start;
+}
+
+.code-block code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  line-height: 22px;
+  color: #fff;
+  white-space: pre;
+  overflow-x: auto;
+  min-width: 0;
+  flex: 1;
+}
+
+html[data-theme='light'] .code-block code {
+  color: #3c3c3c;
+}
+
+.code-block code.hljs {
+  display: block;
+  padding: 0;
+  background: transparent;
+}
+
+html[data-theme='light'] .code-block code.hljs {
+  color: #3c3c3c;
+}
+
+/* Copy button — ghost icon button with a dual-icon (copy ⇄ check)
+   crossfade and a "Copy code" ⇄ "Copied" tooltip pill. */
+.copy-btn {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  max-width: 32px;
+  max-height: 32px;
+  aspect-ratio: 1 / 1;
+  margin-right: -3px;
+  border: 0;
+  border-radius: 6px;
+  padding: 0;
+  line-height: 0;
+  background: transparent;
+  background-image: none;
+  color: rgba(237, 237, 237, 0.6);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html[data-theme='light'] .copy-btn {
+  color: rgba(13, 13, 13, 0.6);
+}
+
+.copy-btn:hover {
+  background-image: none;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ededed;
+}
+
+.copy-btn:active {
+  background-image: none;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme='light'] .copy-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: #0d0d0d;
+}
+
+html[data-theme='light'] .copy-btn:active {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.copy-btn:focus-visible {
+  outline: 2px solid #ededed;
+  outline-offset: 2px;
+}
+
+html[data-theme='light'] .copy-btn:focus-visible {
+  outline-color: #0d0d0d;
+}
+
+.copy-btn svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  display: block;
+  transform-origin: center;
+  will-change: opacity, transform, filter;
+  transition:
+    opacity 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.copy-btn .icon-copy {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  filter: blur(0);
+}
+
+.copy-btn .icon-check {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.25);
+  filter: blur(4px);
+  color: currentColor;
+}
+
+.copy-btn[data-copied='true'] .icon-copy {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.25);
+  filter: blur(4px);
+}
+
+.copy-btn[data-copied='true'] .icon-check {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  filter: blur(0);
+}
+
+/* Copy button tooltip — pill above the button that fades in on hover /
+   focus / copied, animating width between "Copy code" ⇄ "Copied". */
+.copy-btn-tooltip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(100% + 8px);
+  box-sizing: border-box;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 40px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 150ms;
+  background: #ffffff;
+  color: #17181c;
+  box-shadow:
+    0 2px 8px 0 rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 1px 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme='dark'] .copy-btn-tooltip {
+  background: #181818;
+  color: #e3e3e3;
+  box-shadow:
+    0 1px 16px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.06),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(196, 196, 196, 0.08);
+}
+
+@media (hover: hover) {
+  .copy-btn:hover .copy-btn-tooltip,
+  .copy-btn:focus-visible .copy-btn-tooltip,
+  .copy-btn[data-copied='true'] .copy-btn-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 150ms cubic-bezier(0.22, 1, 0.36, 1) 50ms,
+      visibility 0s linear 50ms;
+  }
+  .copy-btn[data-copied='true'] .copy-btn-tooltip {
+    transition:
+      opacity 150ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear;
+  }
+}
+
+.copy-btn-tooltip .tt-text {
+  display: inline-flex;
+  align-items: baseline;
+  line-height: 16px;
+}
+
+.copy-btn-tooltip .tt-stem {
+  display: inline-block;
+  line-height: 16px;
+}
+
+.copy-btn-tooltip .tt-swap {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 16px;
+  width: var(--tt-w-a, auto);
+  transition: width 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.copy-btn-tooltip .tt-swap[data-state='copied'] {
+  width: var(--tt-w-b, auto);
+}
+
+.copy-btn-tooltip .tt-label {
+  white-space: pre;
+  transition:
+    opacity 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, filter;
+}
+
+.copy-btn-tooltip .tt-a {
+  display: inline-block;
+}
+
+.copy-btn-tooltip .tt-b {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.copy-btn-tooltip .tt-swap .tt-a {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.copy-btn-tooltip .tt-swap .tt-b {
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.copy-btn-tooltip .tt-swap[data-state='copied'] .tt-a {
+  opacity: 0;
+  filter: blur(2px);
+}
+
+.copy-btn-tooltip .tt-swap[data-state='copied'] .tt-b {
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media (hover: none) {
+  .copy-btn[data-copied='true'] .copy-btn-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 150ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear;
+  }
+  .copy-btn-tooltip .tt-swap {
+    width: var(--tt-w-b, auto);
+    transition: none;
+  }
+  .copy-btn-tooltip .tt-label {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy-btn-tooltip,
+  .copy-btn-tooltip .tt-swap,
+  .copy-btn-tooltip .tt-label {
+    transition: none !important;
+  }
+}
+
+/* ─── Playground ───────────────────────────────────────────── */
+
+.playground-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 48px;
+}
+
+.playground-section .section-title {
+  margin-bottom: 0;
+}
+
+.playground-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 22px;
+  background: #121212;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+html[data-theme='light'] .playground-controls {
+  background: #f7f7f7;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.control-label {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  color: rgba(251, 251, 251, 0.6);
+}
+
+html[data-theme='light'] .control-label {
+  color: #767676;
+}
+
+.control-options {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(251, 251, 251, 0.5);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(251, 251, 251, 0.7);
+}
+
+.tab-btn[data-active='true'] {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fbfbfb;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.02),
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.tab-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Light-mode playground buttons. Scoped under .playground-controls so the
+   Rotate/Pulse family tabs (with their sliding pill) keep their own styling. */
+html[data-theme='light'] .playground-controls .tab-btn {
+  background: #ebebeb;
+  color: #17181c;
+}
+
+html[data-theme='light'] .playground-controls .tab-btn:hover {
+  background: #e2e2e2;
+  color: #17181c;
+}
+
+html[data-theme='light'] .playground-controls .tab-btn[data-active='true'] {
+  background: #ffffff;
+  color: #17181c;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    inset 0 0 0 0.5px rgba(0, 0, 0, 0.06),
+    inset 0 -0.5px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='light'] .tab-btn:focus-visible {
+  outline-color: #17181c;
+}
+
+.control-group--strength {
+  min-width: 100px;
+  width: 140px;
+}
+
+.strength-track {
+  position: relative;
+  width: 100%;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.02),
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  cursor: grab;
+  transition: background-color 0.15s ease;
+}
+
+.strength-track:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.strength-track:active {
+  cursor: grabbing;
+}
+
+html[data-theme='light'] .strength-track {
+  background: #ebebeb;
+  box-shadow: none;
+}
+
+html[data-theme='light'] .strength-track:hover {
+  background: #e2e2e2;
+}
+
+.strength-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.02),
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.06);
+  transition: width 0.08s ease-out;
+  pointer-events: none;
+}
+
+html[data-theme='light'] .strength-fill {
+  background: #ffffff;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    inset 0 0 0 0.5px rgba(0, 0, 0, 0.06),
+    inset 0 -0.5px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.strength-value {
+  position: absolute;
+  top: 0;
+  left: 11px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 400;
+  color: rgba(251, 251, 251, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
+
+html[data-theme='light'] .strength-value {
+  color: #17181c;
+}
+
+.strength-input {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: grab;
+  opacity: 0;
+  z-index: 2;
+  touch-action: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.strength-input::-moz-focus-outer {
+  border: 0;
+}
+
+.strength-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  cursor: grab;
+}
+
+.strength-input::-moz-range-thumb {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  cursor: grab;
+}
+
+.strength-input:active {
+  cursor: grabbing;
+}
+
+.strength-track:has(.strength-input:focus-visible) {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+html[data-theme='light'] .strength-track:has(.strength-input:focus-visible) {
+  outline-color: rgba(0, 0, 0, 0.4);
+}
+
+.playground-preview {
+  width: 100%;
+  min-height: 304px;
+  border-radius: 10px;
+  background: rgba(217, 217, 217, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 48px;
+}
+
+html[data-theme='light'] .playground-preview {
+  background: #f7f7f7;
+}
+
+.playground-preview--pulse {
+  overflow: visible;
+  padding: 64px;
+}
+
+/* Circular icon toggle buttons under the playground card. */
+.playground-toolbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.playground-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(251, 251, 251, 0.7);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.playground-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fbfbfb;
+}
+
+.playground-toggle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.playground-toggle svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  stroke: none;
+}
+
+html[data-theme='light'] .playground-toggle {
+  background: #ebebeb;
+  color: #17181c;
+}
+
+html[data-theme='light'] .playground-toggle:hover {
+  background: #e2e2e2;
+  color: #17181c;
+}
+
+html[data-theme='light'] .playground-toggle:focus-visible {
+  outline-color: #17181c;
+}
+
+/* ─── Footer ───────────────────────────────────────────────── */
+
+.footer {
+  font-size: 13px;
+  line-height: 14px;
+  text-align: center;
+  padding: 48px 0 24px;
+}
+
+.footer-muted {
+  color: var(--c-muted-soft);
+}
+
+.footer-name {
+  color: var(--c-muted-strong);
+  text-decoration: none;
+}
+
+.footer-name:hover {
+  color: var(--c-muted-strongest);
+}
+
+/* ─── Card styles for playground ───────────────────────────── */
+
+.card {
+  padding: 24px;
+  background: var(--c-mock-bg);
+  border: 1px solid var(--c-mock-border);
+  box-shadow: inset 0 0 50px 0 var(--c-mock-glow);
+}
+
+.card-sm {
+  width: 80px;
+  height: 36px;
+  padding: 0;
+  border-radius: 36px;
+}
+
+.card-md {
+  width: 348px;
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.card-text {
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--c-mock-placeholder);
+}
+
+/* ─── Reduced motion ───────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Mobile: < 640px ──────────────────────────────────────── */
+
+@media (max-width: 639px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .app {
+    padding: 0 16px 48px;
+  }
+
+  .header {
+    height: auto;
+    min-height: 180px;
+    padding-top: 60px;
+    padding-bottom: 32px;
+  }
+
+  .top-bar-links {
+    top: 12px;
+  }
+
+  /* The sliding pages are absolutely stacked, so on desktop the section needs a
+     fixed height. On mobile the content is taller and varies per tab, so let the
+     active page sit in normal flow and drive the section height instead — that
+     way the background cards grow to their content rather than overflowing a
+     fixed frame. The inactive page stays an absolute, clipped overlay for the
+     cross-fade. */
+  .examples-section {
+    min-height: 0;
+  }
+
+  .t-page-slide .t-page {
+    overflow: hidden;
+  }
+
+  .t-page-slide[data-page='1'] .t-page[data-page-id='1'],
+  .t-page-slide[data-page='2'] .t-page[data-page-id='2'] {
+    position: relative;
+    overflow: visible;
+  }
+
+  .example-row-full {
+    height: auto;
+    min-height: 200px;
+    padding: 32px 20px;
+    border-radius: 20px;
+  }
+
+  .example-row-split {
+    grid-template-columns: 1fr;
+  }
+
+  .example-cell {
+    padding: 32px 20px;
+    min-height: 140px;
+    border-radius: 20px;
+    overflow: visible;
+  }
+
+  .example-cell:last-child {
+    min-height: 100px;
+    padding: 24px 20px;
+  }
+
+  /* Let the beam wrappers shrink below their content so the cards' max-width
+     can cap them to the frame instead of overflowing on narrow phones. */
+  .example-row-full > *,
+  .example-cell > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Widen the card mocks ~80px beyond their natural content width on mobile so
+     they fill more of the example frame. They inherit max-width:100% from their
+     base rules, so they still cap to the available width on the narrowest
+     phones. */
+  .mock-chat {
+    width: 273px;
+  }
+
+  .mock-working {
+    width: 363px;
+  }
+
+  .mock-search {
+    width: 380px;
+    max-width: 100%;
+    height: 48px;
+    border-radius: 20px;
+  }
+
+  .playground-controls {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .playground-preview {
+    padding: 32px 16px;
+    min-height: 240px;
+  }
+
+  .card-md {
+    width: 100%;
+  }
+
+  .code-block code {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .section-title {
+    font-size: 15px;
+  }
+}
+
+/* ─── Tablet: 640–883px ────────────────────────────────────── */
+
+@media (min-width: 640px) and (max-width: 883px) {
+  .examples-section {
+    min-height: 642px;
+  }
+
+  .example-row-full {
+    padding: 40px 32px;
+  }
+
+  .example-cell {
+    padding: 40px 24px;
+    min-height: 260px;
+  }
+
+  .playground-controls {
+    flex-wrap: wrap;
+  }
+}

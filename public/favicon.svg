@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="218" height="218" viewBox="0 0 218 218" fill="none">
+  <defs>
+    <radialGradient id="g1" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(-0.0000015689 7.5808 -31.198 -0.0000053684 108.97 -28.428)">
+      <stop stop-color="rgb(0,146,204)"/>
+      <stop offset="1" stop-color="rgb(0,146,204)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(-3.3166 0.24557 -0.87421 -11.807 217.95 59.138)">
+      <stop stop-color="rgb(204,0,167)"/>
+      <stop offset="1" stop-color="rgb(170,0,204)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g3" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(-1.6612 0 0 -5.9138 217.95 59.138)">
+      <stop stop-color="rgb(204,0,167)"/>
+      <stop offset="1" stop-color="rgb(170,0,204)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g4" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(-2.369 -0.4738 1.6867 -8.4336 227.42 118.45)">
+      <stop stop-color="rgb(255,173,85)"/>
+      <stop offset="1" stop-color="rgb(255,173,85)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g5" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(6.1594 3.3166 -11.807 21.927 14.214 0)">
+      <stop stop-color="rgb(0,204,68)"/>
+      <stop offset="0.25" stop-color="rgb(0,196,102)" stop-opacity="0.75"/>
+      <stop offset="0.5" stop-color="rgb(0,187,136)" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="rgb(0,170,204)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g6" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(-2.8428 3.7904 -13.494 -10.12 184.78 9.476)">
+      <stop stop-color="rgb(54,114,255)"/>
+      <stop offset="1" stop-color="rgb(54,114,255)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g7" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(-1.6612 0 0 -5.9138 217.95 59.138)">
+      <stop stop-color="rgb(0,58,204)"/>
+      <stop offset="1" stop-color="rgb(0,58,204)" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g8" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="10" gradientTransform="matrix(-3.5217 0 0 -6.9499 217.95 59.138)">
+      <stop stop-color="rgb(0,58,204)"/>
+      <stop offset="1" stop-color="rgb(0,54,204)" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="clip">
+      <rect width="218" height="218" rx="56.856"/>
+    </clipPath>
+    <filter id="glow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="5.4"/>
+    </filter>
+  </defs>
+
+  <g clip-path="url(#clip)">
+    <rect width="218" height="218" fill="rgb(25,25,25)" fill-opacity="0.7"/>
+    <rect width="218" height="218" fill="url(#g8)" opacity="0.2"/>
+    <rect width="218" height="218" fill="url(#g7)" opacity="0.2"/>
+    <rect width="218" height="218" fill="url(#g6)" opacity="0.7"/>
+    <rect width="218" height="218" fill="url(#g5)" opacity="0.7"/>
+    <rect width="218" height="218" fill="url(#g4)" opacity="0.9"/>
+    <rect width="218" height="218" fill="url(#g3)" opacity="0.9"/>
+    <rect width="218" height="218" fill="url(#g2)" opacity="0.5"/>
+    <rect width="218" height="218" fill="url(#g1)" opacity="0.4"/>
+    <rect width="218" height="218" fill="black" fill-opacity="0.2"/>
+    <rect x="-2.4" y="-2.4" width="222.8" height="222.8" rx="59.2" fill="none" stroke="rgb(39,118,255)" stroke-opacity="0.64" stroke-width="4.738" filter="url(#glow)"/>
+  </g>
+
+  <rect x="2.369" y="2.369" width="213.262" height="213.262" rx="54.487" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="4.738"/>
+  <rect x="2.369" y="2.369" width="213.262" height="213.262" rx="54.487" fill="none" stroke="white" stroke-opacity="0.05" stroke-width="4.738"/>
+</svg>
