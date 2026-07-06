@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      'vue-border-beam': fileURLToPath(new URL('./src/index.ts', import.meta.url)),
+      '@stevebauman/vue-border-beam': fileURLToPath(new URL('./src/index.ts', import.meta.url)),
     },
   },
   build: {

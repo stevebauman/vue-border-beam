@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch, type CSSProperties } from 'vue';
-import { BorderBeam, type BorderBeamColorVariant, type BorderBeamSize } from 'vue-border-beam';
+import { BorderBeam, type BorderBeamColorVariant, type BorderBeamSize } from '@stevebauman/vue-border-beam';
 import CopyButton from './CopyButton.vue';
 import HighlightedCode from './HighlightedCode.vue';
 import {
@@ -62,8 +62,8 @@ const sizeOptions = computed(() => sizeOptionsByFamily[family.value]);
 const isPulse = computed(() => family.value === 'pulse');
 const rotateTabActive = computed(() => family.value === 'rotate');
 const pulseTabActive = computed(() => family.value === 'pulse');
-const installCmd = 'npm install vue-border-beam';
-const usageCode = `import { BorderBeam } from 'vue-border-beam';
+const installCmd = 'npm install @stevebauman/vue-border-beam';
+const usageCode = `import { BorderBeam } from '@stevebauman/vue-border-beam';
 
 <BorderBeam>
   <YourCard>Content</YourCard>

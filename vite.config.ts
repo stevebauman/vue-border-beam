@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig(({ mode }) => ({
+  publicDir: false,
   plugins: [
     vue(),
     mode === 'production' && dts({
@@ -13,7 +14,7 @@ export default defineConfig(({ mode }) => ({
   ].filter(Boolean),
   resolve: {
     alias: {
-      'vue-border-beam': fileURLToPath(new URL('./src/index.ts', import.meta.url)),
+      '@stevebauman/vue-border-beam': fileURLToPath(new URL('./src/index.ts', import.meta.url)),
     },
   },
   build: {

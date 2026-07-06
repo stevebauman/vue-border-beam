@@ -1,6 +1,6 @@
 {
-  "name": "vue-border-beam",
-  "version": "0.1.0",
+  "name": "@stevebauman/vue-border-beam",
+  "version": "1.0.0",
   "description": "Animated border beam effect for Vue",
   "type": "module",
   "main": "dist/index.cjs.js",
@@ -21,6 +21,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
   "scripts": {
     "dev": "vite --host 127.0.0.1",
@@ -63,5 +66,5 @@
   "bugs": {
     "url": "https://github.com/stevebauman/vue-border-beam/issues"
   },
-  "homepage": "https://github.com/stevebauman/vue-border-beam#readme"
+  "homepage": "https://stevebauman.github.io/vue-border-beam/"
 }

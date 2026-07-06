@@ -12,14 +12,14 @@ Add a traveling or breathing glow animation around any element: cards, buttons, 
 ## Install
 
 ```bash
-npm install vue-border-beam
+npm install @stevebauman/vue-border-beam
 ```
 
 ## Quick start
 
 ```vue
 <script setup lang="ts">
-import { BorderBeam } from 'vue-border-beam';
+import { BorderBeam } from '@stevebauman/vue-border-beam';
 </script>
 
 <template>
@@ -231,7 +231,7 @@ Toggle the animation with smooth fade transitions:
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue';
-import { BorderBeam } from 'vue-border-beam';
+import { BorderBeam } from '@stevebauman/vue-border-beam';
 
 const active = ref(true);
 </script>

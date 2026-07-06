@@ -17,7 +17,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "vue-border-beam": ["./src/index.ts"]
+      "@stevebauman/vue-border-beam": ["./src/index.ts"]
     }
   },
   "include": ["env.d.ts", "src/**/*.ts", "src/**/*.vue", "demo/**/*.ts", "demo/**/*.vue", "tests/**/*.ts"],
