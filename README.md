@@ -4,6 +4,11 @@ Animated border beam effect for Vue. This is a Vue 3 port of [`border-beam`](htt
 
 Add a traveling or breathing glow animation around any element: cards, buttons, inputs, search bars, chat boxes, or loading panels.
 
+## Requirements
+
+- Vue 3.3+
+- Modern browser with CSS `@property` support for the smoothest rotate animations
+
 ## Install
 
 ```bash
@@ -283,22 +288,3 @@ All standard `HTMLDivElement` attributes are forwarded to the wrapper, including
 The effect layers are decorative and use `pointer-events: none`, so they do not interfere with input, hover, focus, or screen readers.
 
 Rotate and line presets animate with generated CSS keyframes. Pulse presets use a shared, frame-rate-capped `requestAnimationFrame` driver for breathing motion and automatically pause when inactive, offscreen, or when the user prefers reduced motion.
-
-## Requirements
-
-- Vue 3.3+
-- Modern browser with CSS `@property` support for the smoothest rotate animations
-
-## Development
-
-```bash
-npm install
-npm run dev
-npm run test
-npm run typecheck
-npm run build
-```
-
-## License
-
-[MIT](./LICENSE)
