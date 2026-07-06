@@ -47,6 +47,7 @@ const colorOptions: { value: BorderBeamColorVariant; label: string }[] = [
   { value: 'sunset', label: 'Sunset' },
 ];
 
+const baseUrl = import.meta.env.BASE_URL;
 const family = ref<BeamFamily>(familyFromPath(window.location.pathname));
 const playgroundActive = ref(true);
 const playgroundSize = ref<BorderBeamSize>(defaultSizeByFamily[family.value]);
@@ -55,7 +56,6 @@ const playgroundStrength = ref(70);
 const theme = ref<ThemeMode>(getInitialTheme());
 const tabList = ref<HTMLElement | null>(null);
 const tabPill = ref<HTMLSpanElement | null>(null);
-const baseUrl = import.meta.env.BASE_URL;
 let tabPillReady = false;
 
 const sizeOptions = computed(() => sizeOptionsByFamily[family.value]);
