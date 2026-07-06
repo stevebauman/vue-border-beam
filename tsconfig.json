@@ -20,6 +20,6 @@
       "vue-border-beam": ["./src/index.ts"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "demo/**/*.ts", "demo/**/*.vue", "tests/**/*.ts"],
+  "include": ["env.d.ts", "src/**/*.ts", "src/**/*.vue", "demo/**/*.ts", "demo/**/*.vue", "tests/**/*.ts"],
   "references": []
 }

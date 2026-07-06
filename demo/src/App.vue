@@ -55,6 +55,7 @@ const playgroundStrength = ref(70);
 const theme = ref<ThemeMode>(getInitialTheme());
 const tabList = ref<HTMLElement | null>(null);
 const tabPill = ref<HTMLSpanElement | null>(null);
+const baseUrl = import.meta.env.BASE_URL;
 let tabPillReady = false;
 
 const sizeOptions = computed(() => sizeOptionsByFamily[family.value]);
@@ -101,11 +102,16 @@ onBeforeUnmount(() => {
 });
 
 function familyFromPath(pathname: string): BeamFamily {
-  return /\/pulse\/?$/i.test(pathname) ? 'pulse' : 'rotate';
+  const basePath = new URL(baseUrl, window.location.origin).pathname.replace(/\/$/, '');
+  const path = basePath && pathname.startsWith(basePath)
+    ? pathname.slice(basePath.length) || '/'
+    : pathname;
+
+  return /\/pulse\/?$/i.test(path) ? 'pulse' : 'rotate';
 }
 
 function pathForFamily(value: BeamFamily): string {
-  return value === 'pulse' ? '/pulse' : '/';
+  return `${baseUrl.replace(/\/$/, '')}${value === 'pulse' ? '/pulse' : '/'}`;
 }
 
 function getInitialTheme(): ThemeMode {
@@ -214,8 +220,8 @@ function moveTabPill(animate: boolean): void {
       </nav>
 
       <div class="header-icon" aria-hidden="true">
-        <img class="header-icon-img header-icon-img--dark" src="/icon-web.png" alt="" width="207" height="138">
-        <img class="header-icon-img header-icon-img--light" src="/icon-web-light.png" alt="" width="207" height="138">
+        <img class="header-icon-img header-icon-img--dark" :src="`${baseUrl}icon-web.png`" alt="" width="207" height="138">
+        <img class="header-icon-img header-icon-img--light" :src="`${baseUrl}icon-web-light.png`" alt="" width="207" height="138">
       </div>
       <h1 class="title">Border beam</h1>
       <p class="subtitle-sm">Animated border beam component</p>

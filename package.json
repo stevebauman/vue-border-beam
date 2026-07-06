@@ -25,6 +25,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
+    "build:demo": "vite build --config vite.demo.config.ts",
     "test": "vitest run",
     "typecheck": "vue-tsc --noEmit",
     "prepublishOnly": "npm run build"
