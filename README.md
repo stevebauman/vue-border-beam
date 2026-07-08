@@ -1,4 +1,4 @@
-<h1 align="center">vue-border-beam</h1>
+<h1 align="center">Vue Border Beam</h1>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@stevebauman/vue-border-beam"><img src="https://img.shields.io/npm/v/@stevebauman/vue-border-beam.svg" alt="npm version"></a>
