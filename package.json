@@ -1,6 +1,6 @@
 {
   "name": "@stevebauman/vue-border-beam",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Animated border beam effect for Vue",
   "type": "module",
   "main": "dist/index.cjs.js",
