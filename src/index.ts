@@ -8,3 +8,5 @@ export type {
   SizeConfig,
   ThemeColors,
 } from './types';
+
+export { sizePresets, sizeThemePresets, themeColors } from './styles';

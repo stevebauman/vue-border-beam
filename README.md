@@ -224,6 +224,32 @@ Control the overall intensity without affecting the wrapped content:
 
 `strength` accepts a value from `0` to `1`.
 
+## CSS customization hooks
+
+You can tune advanced glow behavior with CSS custom properties on the `BorderBeam` wrapper or a class passed to it:
+
+```vue
+<template>
+  <BorderBeam class="custom-beam" size="pulse-outside">
+    <Card />
+  </BorderBeam>
+</template>
+
+<style>
+.custom-beam {
+  --pulse-glow-boost: 1.2;
+  --beam-core-blur: 16px;
+  --beam-bloom-blur: 34px;
+  --beam-glow-brightness: 1.8;
+  --beam-glow-saturate: 1.1;
+  --beam-inner-opacity: 0.85;
+  --beam-hue-base: 12deg;
+}
+</style>
+```
+
+`--pulse-glow-boost` scales the `pulse-outside` halo after it has been measured against the wrapped element. The `--beam-core-blur`, `--beam-bloom-blur`, `--beam-glow-brightness`, `--beam-glow-saturate`, `--beam-inner-opacity`, and `--beam-hue-base` hooks let you fine-tune the generated glow without replacing the component CSS.
+
 ## Play / pause
 
 Toggle the animation with smooth fade transitions:
