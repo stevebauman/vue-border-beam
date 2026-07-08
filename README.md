@@ -1,4 +1,14 @@
-# vue-border-beam
+<h1 align="center">vue-border-beam</h1>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@stevebauman/vue-border-beam"><img src="https://img.shields.io/npm/v/@stevebauman/vue-border-beam.svg" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@stevebauman/vue-border-beam"><img src="https://img.shields.io/npm/dm/@stevebauman/vue-border-beam.svg" alt="npm downloads"></a>
+  <a href="https://github.com/stevebauman/vue-border-beam/actions/workflows/tests.yml"><img src="https://github.com/stevebauman/vue-border-beam/actions/workflows/tests.yml/badge.svg?branch=master" alt="Tests"></a>
+  <a href="https://github.com/stevebauman/vue-border-beam/blob/master/LICENSE"><img src="https://img.shields.io/github/license/stevebauman/vue-border-beam.svg" alt="License"></a>
+  <img src="https://img.shields.io/badge/vue-3.3%2B-42b883.svg" alt="Vue 3.3+">
+</p>
+
+---
 
 Animated border beam effect for Vue. This is a Vue 3 port of [`border-beam`](https://github.com/Jakubantalik/border-beam), with the same visual presets and a Vue-friendly event API.
 
