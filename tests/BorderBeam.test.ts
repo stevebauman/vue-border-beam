@@ -87,6 +87,24 @@ describe('BorderBeam', () => {
     expect((wrapper.find('[data-beam]').element as HTMLElement).style.getPropertyValue('--beam-strength')).toBe('0.35');
   });
 
+  it('supports the expanded palettes and glow sizing', () => {
+    mount(BorderBeam, {
+      props: {
+        colorVariant: 'candy',
+        glowSize: 2,
+      },
+      slots: {
+        default: '<div>Card</div>',
+      },
+    });
+
+    const style = document.head.querySelector('style')?.textContent ?? '';
+
+    expect(style).toContain('rgb(240, 70, 170)');
+    expect(style).toContain('blur(16px)');
+    expect(style).not.toContain(',,');
+  });
+
   it('clamps strength without changing wrapped content opacity', () => {
     const wrapper = mount(BorderBeam, {
       props: {

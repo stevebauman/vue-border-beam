@@ -13,7 +13,15 @@ export type BorderBeamTheme = 'dark' | 'light' | 'auto';
 /**
  * Color variant for the beam effect.
  */
-export type BorderBeamColorVariant = 'colorful' | 'mono' | 'ocean' | 'sunset';
+export type BorderBeamColorVariant =
+  | 'colorful'
+  | 'mono'
+  | 'ocean'
+  | 'sunset'
+  | 'forest'
+  | 'candy'
+  | 'ice'
+  | 'gold';
 
 /**
  * Configuration for a size preset.
@@ -51,6 +59,12 @@ export interface BorderBeamProps extends /* @vue-ignore */ HTMLAttributes {
   borderRadius?: number;
   brightness?: number;
   saturation?: number;
+  /**
+   * Multiplies the blur radius of every glow layer.
+   *
+   * @default 1
+   */
+  glowSize?: number;
   hueRange?: number;
   strength?: number;
 }

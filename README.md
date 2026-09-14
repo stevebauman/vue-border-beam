@@ -292,7 +292,7 @@ const active = ref(true);
 | --- | --- | --- | --- |
 | default slot | `VNodeChild` | — | Content to wrap |
 | `size` | `'sm' \| 'md' \| 'line' \| 'pulse-outside' \| 'pulse-inner'` | `'md'` | Beam preset |
-| `colorVariant` | `'colorful' \| 'mono' \| 'ocean' \| 'sunset'` | `'colorful'` | Beam palette |
+| `colorVariant` | `'colorful' \| 'mono' \| 'ocean' \| 'sunset' \| 'forest' \| 'candy' \| 'ice' \| 'gold'` | `'colorful'` | Beam palette |
 | `theme` | `'dark' \| 'light' \| 'auto'` | `'dark'` | Background adaptation |
 | `strength` | `number` | `1` | Effect opacity from `0` to `1` |
 | `duration` | `number` | preset-based | Animation cycle duration in seconds |
@@ -300,6 +300,7 @@ const active = ref(true);
 | `borderRadius` | `number` | auto-detected | Border radius in pixels |
 | `brightness` | `number` | preset-based | Glow brightness multiplier |
 | `saturation` | `number` | preset-based | Glow saturation multiplier |
+| `glowSize` | `number` | `1` | Glow blur radius multiplier |
 | `hueRange` | `number` | `30` | Hue rotation range in degrees |
 | `staticColors` | `boolean` | `false` | Disable hue-shift animation |
 
