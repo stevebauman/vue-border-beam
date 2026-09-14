@@ -67,4 +67,6 @@ export interface BorderBeamProps extends /* @vue-ignore */ HTMLAttributes {
   glowSize?: number;
   hueRange?: number;
   strength?: number;
+  /** Extra CSS appended after the generated styles. `{id}` is replaced with the instance ID. */
+  css?: string;
 }

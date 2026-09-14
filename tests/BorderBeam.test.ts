@@ -105,6 +105,47 @@ describe('BorderBeam', () => {
     expect(style).not.toContain(',,');
   });
 
+  it('isolates custom rules and keyframes between instances', () => {
+    const css = '[data-beam="{id}"] { animation: custom-{id} 1s; } @keyframes custom-{id} { to { opacity: 0.5; } }';
+    const first = mount(BorderBeam, { props: { css } });
+    const second = mount(BorderBeam, { props: { css } });
+    const firstId = first.attributes('data-beam');
+    const secondId = second.attributes('data-beam');
+    const styles = document.head.querySelectorAll('style');
+
+    expect(firstId).not.toBe(secondId);
+    expect(styles[0].textContent).toContain(`animation: custom-${firstId} 1s`);
+    expect(styles[0].textContent).toContain(`@keyframes custom-${firstId}`);
+    expect(styles[0].textContent).not.toContain(secondId);
+    expect(styles[1].textContent).toContain(`animation: custom-${secondId} 1s`);
+    expect(styles[1].textContent).not.toContain(firstId);
+    expect(styles[0].textContent).not.toContain('{id}');
+    expect(first.attributes('css')).toBeUndefined();
+
+    first.unmount();
+    expect(styles[0].isConnected).toBe(false);
+    expect(styles[1].isConnected).toBe(true);
+    second.unmount();
+  });
+
+  it('appends, updates, and removes custom css without losing generated styles', async () => {
+    const wrapper = mount(BorderBeam);
+    const style = document.head.querySelector('style')!;
+    const generated = style.textContent;
+    const id = wrapper.attributes('data-beam');
+
+    await wrapper.setProps({ css: '[data-beam="{id}"] { color: red; }' });
+    expect(style.textContent).toBe(`${generated}\n[data-beam="${id}"] { color: red; }`);
+
+    await wrapper.setProps({ css: '[data-beam="{id}"] { color: blue; }' });
+    expect(style.textContent).toBe(`${generated}\n[data-beam="${id}"] { color: blue; }`);
+
+    await wrapper.setProps({ css: '' });
+    expect(style.textContent).toBe(generated);
+    wrapper.unmount();
+    expect(style.isConnected).toBe(false);
+  });
+
   it('clamps strength without changing wrapped content opacity', () => {
     const wrapper = mount(BorderBeam, {
       props: {
