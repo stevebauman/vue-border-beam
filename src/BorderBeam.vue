@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<BorderBeamProps>(), {
   theme: 'dark',
   staticColors: false,
   active: true,
+  glowSize: 1,
   hueRange: 30,
   strength: 1,
 });
@@ -77,6 +78,7 @@ const css = computed(() => generateBeamCSS({
   staticColors: finalStaticColors.value,
   brightness: finalBrightness.value,
   saturation: finalSaturation.value,
+  glowSize: props.glowSize,
   hueRange: finalHueRange.value,
   theme: resolvedTheme.value,
   hairlineOpacity: themeConfig.value.hairlineOpacity,
