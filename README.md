@@ -286,6 +286,20 @@ const active = ref(true);
 </template>
 ```
 
+## Custom CSS
+
+Use the `css` prop to append rules after the generated beam styles. Every `{id}` placeholder is replaced with that instance's ID, allowing overrides to target a single beam:
+
+```vue
+<BorderBeam
+  css='[data-beam="{id}"] [data-beam-bloom] { opacity: 0.4; }'
+>
+  <Card />
+</BorderBeam>
+```
+
+The placeholder also works in custom keyframe names. Overrides update when the prop changes and are removed when the component unmounts. CSS without an instance selector applies globally; this advanced API depends on the generated selectors and animation names.
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -303,6 +317,7 @@ const active = ref(true);
 | `glowSize` | `number` | `1` | Glow blur radius multiplier |
 | `hueRange` | `number` | `30` | Hue rotation range in degrees |
 | `staticColors` | `boolean` | `false` | Disable hue-shift animation |
+| `css` | `string` | — | Extra CSS with per-instance `{id}` substitution |
 
 All standard `HTMLDivElement` attributes are forwarded to the wrapper, including `class`, `style`, `id`, and `aria-*`.
 

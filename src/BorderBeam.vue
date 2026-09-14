@@ -64,7 +64,7 @@ const finalBrightness = computed(() => props.brightness ?? themeConfig.value.bri
 const finalHueRange = computed(() => props.size === 'line' ? Math.min(props.hueRange, 13) : props.hueRange);
 const finalStaticColors = computed(() => props.colorVariant === 'mono' ? true : props.staticColors);
 
-const css = computed(() => generateBeamCSS({
+const generatedCss = computed(() => generateBeamCSS({
   id,
   borderRadius: finalBorderRadius.value,
   borderWidth: sizeConfig.value.borderWidth,
@@ -83,6 +83,10 @@ const css = computed(() => generateBeamCSS({
   theme: resolvedTheme.value,
   hairlineOpacity: themeConfig.value.hairlineOpacity,
 }));
+
+const css = computed(() => props.css
+  ? `${generatedCss.value}\n${props.css.split('{id}').join(id)}`
+  : generatedCss.value);
 
 const driverConfig = computed(() => isPulse.value
   ? getPulseDriverConfig(
