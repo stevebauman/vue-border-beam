@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => ({
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       name: 'VueBorderBeam',
       formats: ['es', 'cjs'],
-      fileName: format => `index.${format}.js`,
+      fileName: format => format === 'es' ? 'index.es.js' : 'index.cjs',
     },
     rollupOptions: {
       external: ['vue'],
